@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Src="~/Login.ascx" TagPrefix="uc1" TagName="Login" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="CSS/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="common.css" rel="stylesheet" type="text/css" />
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div class="container-fluid">
+            <header>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">Trang Chu</a></li>
+                            <li><a href="#">San Pham</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" runat="server" id="ulRegister">
+                            <li><a href="dangky.aspx">Dang Ky</a></li>
+                            <li><a onclick="show_modal()" href="#">Dang Nhap</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" runat="server" id="ulUser" Visible="false">
+                            <li><asp:Label runat="server" ID="lbluser"></asp:Label></li>
+                            <asp:Button  ID="btnLogouts" CssClass="btn btn-info" runat="server" OnClick="btnLogouts_Click" Text="Logout"/>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="modal" id="login-modal" >
+                     <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Đăng Nhập</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <uc1:Login runat="server" ID="Login" />
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                  </div>
+            </header>
+            <section>
+                <div id="dLeft">
+                    LEFT
+                </div>
+                <div id="dRight">
+                    <asp:ContentPlaceHolder id="Center" runat="server">
+        
+                    </asp:ContentPlaceHolder>
+                </div>
+            </section>
+        </div>
+        
+    </div>
+    </form>
+    <script src="JS/jquery-3.2.1.min.js"></script>
+    <script src="JS/bootstrap.min.js" type="text/javascript" ></script>
+    <script src="JS/BanHang.js"></script>
+</body>
+</html>
